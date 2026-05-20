@@ -22,19 +22,21 @@
 
 ## 📁 Структура проекта
 
-- `hh-mobile-tests/`
-  ├─ `build.gradle.kts`
-  ├─ `gradlew / gradlew.bat`
-  └─ `src/test/`
-  &nbsp;&nbsp;&nbsp;&nbsp;├─ `java/guru/qa/hhmob/`
-  &nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ `config/` — MobileConfig + Project (профильный переключатель)
-  &nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ `drivers/` — DriverFactory: local / browserstack
-  &nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ `helpers/` — Attach (screenshot, page source, BS-сессия)
-  &nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ `pages/` — LanguageDialog, EntrySplashScreen, LoginMethodsScreen
-  &nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└─ `tests/` — BaseTest + PreAuthFlowTests
-  &nbsp;&nbsp;&nbsp;&nbsp;└─ `resources/`
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ `apps/` — hh.apk (arm64-v8a, не в git)
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ `config/` — local.properties, browserstack.properties
+```
+hh-mobile-tests/
+├─ build.gradle.kts
+├─ gradlew, gradlew.bat
+└─ src/test/
+   ├─ java/guru/qa/hhmob/
+   │  ├─ config/             — MobileConfig + Project (профильный переключатель)
+   │  ├─ drivers/            — DriverFactory: local / browserstack
+   │  ├─ helpers/            — Attach (screenshot, page source, BS-сессия)
+   │  ├─ pages/              — LanguageDialog, EntrySplashScreen, LoginMethodsScreen
+   │  └─ tests/              — BaseTest + PreAuthFlowTests
+   └─ resources/
+      ├─ apps/               — hh.apk (arm64-v8a, не в git)
+      └─ config/             — local.properties, browserstack.properties
+```
 
 ---
 
@@ -157,9 +159,3 @@ adb uninstall ru.hh.android
 - **Только pre-auth флоу.** Поиск, отклик, фильтры — за логин-стеной (SMS + капча).
 - **`fullReset=true`** — каждый тест ~12-15 секунд только на reinstall APK.
 - **APK должен быть `arm64-v8a`** (или universal). `armeabi-v7a` падает с `INSTALL_FAILED_NO_MATCHING_ABIS` на x86_64-эмуляторе.
-
----
-
-## 📃 Лицензия
-
-Проект создан в рамках курса **QA.Guru** (Java Base) и предназначен для обучения.
