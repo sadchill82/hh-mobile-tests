@@ -1,0 +1,41 @@
+.gradle/
+build/
+.kotlin/
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### Eclipse ###
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+bin/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### Claude Code session data ###
+.claude/
+
+### Allure ###
+allure-results/
+allure-report/
+.allure/
+
+### Test runtime ###
+build/allure-results/
+build/reports/allure-report/
+*.log
+
+### APK files (too large for git; users provide their own — see README) ###
+src/test/resources/apps/*.apk
+!src/test/resources/apps/.gitkeep
