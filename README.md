@@ -1,5 +1,7 @@
 # 📱 hh.ru — Mobile Automated Tests
 
+<img alt="hh.ru" src="images/logo.svg" width="120">
+
 Автоматизированные тесты для нативного Android-приложения hh.ru на **Appium**, **JUnit 5**, **Gradle** и **Allure**. Screen Object pattern, профильный переключатель локальный/BrowserStack.
 
 Часть дипломного проекта **QA.Guru** (Java Base): [UI](https://github.com/sadchill82/hh-ui-tests) / [API](https://github.com/sadchill82/hh-api-tests) / Mobile / [Manual](https://github.com/sadchill82/hh-manual-tests).
