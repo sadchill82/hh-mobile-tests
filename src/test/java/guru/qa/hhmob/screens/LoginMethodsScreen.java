@@ -1,4 +1,4 @@
-package guru.qa.hhmob.pages;
+package guru.qa.hhmob.screens;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginMethodsScreen extends BaseScreen {
 
-    public static final By HEADING = AppiumBy.androidUIAutomator(
-            "new UiSelector().textContains(\"Вход и регистрация\")");
     public static final By PHONE_OPTION = AppiumBy.androidUIAutomator(
             "new UiSelector().textContains(\"По телефону\")");
     public static final By EMAIL_OPTION = AppiumBy.androidUIAutomator(
@@ -44,10 +42,6 @@ public class LoginMethodsScreen extends BaseScreen {
 
     public boolean hasEmployerOption() {
         return isPresent(EMPLOYER_OPTION);
-    }
-
-    public boolean hasBackButton() {
-        return isPresent(BACK_BUTTON);
     }
 
     @Step("Тап «Назад»")

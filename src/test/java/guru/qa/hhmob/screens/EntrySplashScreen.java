@@ -1,4 +1,4 @@
-package guru.qa.hhmob.pages;
+package guru.qa.hhmob.screens;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -9,8 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 // Splash после language-диалога: «Работа у вас в кармане»
 public class EntrySplashScreen extends BaseScreen {
 
-    public static final By HEADING = AppiumBy.androidUIAutomator(
-            "new UiSelector().textContains(\"Работа\").textContains(\"в кармане\")");
     public static final By NEW_USER_BUTTON = AppiumBy.androidUIAutomator(
             "new UiSelector().textContains(\"Я новый пользователь\")");
     public static final By EXISTING_ACCOUNT_BUTTON = AppiumBy.androidUIAutomator(
@@ -43,12 +41,6 @@ public class EntrySplashScreen extends BaseScreen {
     @Step("Тап «Я новый пользователь»")
     public LoginMethodsScreen tapNewUser() {
         waitClickable(NEW_USER_BUTTON).click();
-        return new LoginMethodsScreen(driver);
-    }
-
-    @Step("Тап «У меня есть аккаунт. Войти»")
-    public LoginMethodsScreen tapExistingAccount() {
-        waitClickable(EXISTING_ACCOUNT_BUTTON).click();
         return new LoginMethodsScreen(driver);
     }
 }

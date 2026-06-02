@@ -1,4 +1,4 @@
-package guru.qa.hhmob.pages;
+package guru.qa.hhmob.screens;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
@@ -16,10 +16,6 @@ public abstract class BaseScreen {
     protected BaseScreen(AndroidDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-    }
-
-    protected WebElement waitVisible(By selector) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(selector));
     }
 
     protected WebElement waitClickable(By selector) {

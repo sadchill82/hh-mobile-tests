@@ -1,6 +1,6 @@
 # 📱 hh.ru — Mobile Automated Tests
 
-Автоматизированные тесты для нативного Android-приложения hh.ru на **Appium**, **JUnit 5**, **Gradle** и **Allure**. Page Object pattern, профильный переключатель локальный/BrowserStack.
+Автоматизированные тесты для нативного Android-приложения hh.ru на **Appium**, **JUnit 5**, **Gradle** и **Allure**. Screen Object pattern, профильный переключатель локальный/BrowserStack.
 
 Часть дипломного проекта **QA.Guru** (Java Base): [UI](https://github.com/sadchill82/hh-ui-tests) / [API](https://github.com/sadchill82/hh-api-tests) / Mobile / [Manual](https://github.com/sadchill82/hh-manual-tests).
 
@@ -17,6 +17,7 @@
 | [![JUnit 5](https://img.shields.io/badge/JUnit_5-5.11-25A162?logo=junit5&logoColor=white)](https://junit.org/junit5/) | Тестовый фреймворк |
 | [![Allure](https://img.shields.io/badge/Allure-2.x-0097A7?logo=qameta&logoColor=white)](https://docs.qameta.io/allure/) | Отчёты о тестах |
 | [![BrowserStack](https://img.shields.io/badge/BrowserStack-Ready-FF6C37?logo=browserstack&logoColor=white)](https://www.browserstack.com/) | Облачные девайсы |
+| [![Jenkins](https://img.shields.io/badge/Jenkins-CI-D24939?logo=jenkins&logoColor=white)](https://jenkins.autotests.cloud/) | Continuous Integration |
 
 ---
 
@@ -26,17 +27,20 @@
 hh-mobile-tests/
 ├─ build.gradle.kts
 ├─ gradlew, gradlew.bat
+├─ images/                   — скриншоты Jenkins/Allure/Telegram для README
 └─ src/test/
    ├─ java/guru/qa/hhmob/
    │  ├─ config/             — MobileConfig + Project (профильный переключатель)
    │  ├─ drivers/            — DriverFactory: local / browserstack
    │  ├─ helpers/            — Attach (screenshot, page source, BS-сессия)
-   │  ├─ pages/              — LanguageDialog, EntrySplashScreen, LoginMethodsScreen
+   │  ├─ screens/            — LanguageDialog, EntrySplashScreen, LoginMethodsScreen
    │  └─ tests/              — BaseTest + PreAuthFlowTests
    └─ resources/
       ├─ apps/               — hh.apk (arm64-v8a, не в git)
       └─ config/             — local.properties, browserstack.properties
 ```
+
+В мобильной автоматизации Page Object исторически называют **Screen Object** — отсюда пакет `screens/`.
 
 ---
 
@@ -53,7 +57,7 @@ hh-mobile-tests/
 
 Каждый тест запускается с `fullReset=true` — APK переустанавливается, диалог первого запуска повторяется.
 
-PageObjects ищут элементы по `UiSelector().textContains(...)`. У hh.ru Compose-UI, поэтому `resource-id` обфусцированы (`ru.hh.android:id/Kifork`) и бесполезны.
+Screen Objects ищут элементы по `UiSelector().textContains(...)`. У hh.ru Compose-UI, поэтому `resource-id` обфусцированы (`ru.hh.android:id/Kifork`) и бесполезны.
 
 ---
 
@@ -73,7 +77,7 @@ PageObjects ищут элементы по `UiSelector().textContains(...)`. У 
    setx ANDROID_SDK_ROOT "%LOCALAPPDATA%\Android\Sdk"
    ```
 4. **AVD** через Device Manager (Pixel 10 Pro Fold, API 36)
-5. **hh.apk** с **arm64-v8a** ABI с [apkmirror](https://www.apkmirror.com/apk/hh-ru/headhunter) положить в `src/test/resources/apps/hh.apk`
+5. **hh.apk** с **arm64-v8a** ABI положить в `src/test/resources/apps/hh.apk`. Найти можно поиском «hh» или «headhunter» на [apkmirror.com](https://www.apkmirror.com/?post_type=app_release&searchtype=apk&s=headhunter) или [apkpure.com](https://apkpure.com/search?q=hh.ru).
 
 ### ▶️ Запуск
 
@@ -111,7 +115,19 @@ appium
 
 ---
 
-## 📊 Allure
+## 📊 Jenkins и Allure
+
+**Jenkins Job:**
+[Перейти к Jenkins](https://jenkins.autotests.cloud/job/C39-sadchill82-hh-mobile-tests/)
+
+**Allure Report:**
+[Перейти к Allure](https://jenkins.autotests.cloud/job/C39-sadchill82-hh-mobile-tests/allure)
+
+### Скриншот Allure-отчёта
+
+![Allure report](images/allure-report.png)
+
+### Генерация отчёта локально
 
 ```bash
 ./gradlew allureServe
@@ -119,10 +135,10 @@ appium
 
 В отчёт цепляются:
 
-- **Скриншот** на момент конца теста
-- **Page source XML** (полное дерево UI)
-- **Ссылка на сессию BrowserStack** (для облачных запусков)
-- **Шаги** через `@Step`
+- Скриншот на момент конца теста
+- Page source XML (полное дерево UI)
+- Ссылка на сессию BrowserStack (для облачных запусков)
+- Шаги через `@Step`
 
 ---
 
@@ -150,7 +166,7 @@ adb uninstall ru.hh.android
 ./gradlew test --tests "guru.qa.hhmob.tests.ExplorationTest"
 ```
 
-В `build/exploration-*.xml` будут полные дампы page source. Обновить тексты в `pages/*.java`.
+В `build/exploration-*.xml` будут полные дампы page source. Обновить тексты в `screens/*.java`.
 
 ---
 

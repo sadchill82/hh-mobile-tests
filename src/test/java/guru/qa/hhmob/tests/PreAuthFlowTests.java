@@ -1,8 +1,8 @@
 package guru.qa.hhmob.tests;
 
-import guru.qa.hhmob.pages.EntrySplashScreen;
-import guru.qa.hhmob.pages.LanguageDialog;
-import guru.qa.hhmob.pages.LoginMethodsScreen;
+import guru.qa.hhmob.screens.EntrySplashScreen;
+import guru.qa.hhmob.screens.LanguageDialog;
+import guru.qa.hhmob.screens.LoginMethodsScreen;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;

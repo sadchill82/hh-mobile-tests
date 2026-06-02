@@ -1,4 +1,4 @@
-package guru.qa.hhmob.pages;
+package guru.qa.hhmob.screens;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -13,8 +13,6 @@ public class LanguageDialog extends BaseScreen {
             "new UiSelector().textContains(\"Переключить язык приложения\")");
     public static final By KEEP_RUSSIAN_BUTTON = AppiumBy.androidUIAutomator(
             "new UiSelector().textContains(\"Оставить русский язык\")");
-    public static final By SWITCH_BUTTON = AppiumBy.androidUIAutomator(
-            "new UiSelector().text(\"Переключить\")");
 
     public LanguageDialog(AndroidDriver driver) {
         super(driver);
